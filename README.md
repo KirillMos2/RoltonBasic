@@ -1,9 +1,12 @@
 # RoltonBasic
 <br>
-<a href="https://github.com/KirillMos2/RoltonBasic/README.md#English">ENG</a>
-<a href="https://github.com/KirillMos2/RoltonBasic/README.md#Русский">РУС</a>
+<a href="https://github.com/KirillMos2/RoltonBasic/README.md#English">ENG version</a>
+
+
+<a href="https://github.com/KirillMos2/RoltonBasic/README.md#Русский">РУС версия</a>
 <br>
 ## English
+
 *RoltonBasic* - functionaly-based programming language on C++. 
 
 It supporting:
@@ -25,6 +28,7 @@ TYPE b
 ```
 
 ## Русский
+
 *RoltonBasic* - функционально-ориентированный язык программирования на C++
 
 Он поддерживает:
