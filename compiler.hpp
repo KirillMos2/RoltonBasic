@@ -20,8 +20,10 @@ std::string translating(std::vector<rbl_types::ast_type> ast, std::vector<rbl_ty
             }
             else {
                 if ((astt.args).size() == 1) {
+                    int st = 0;
                     for (int i = 0; i != vars.size(); i++) {
                         if (vars[i].name == astt.args[0]) {
+                            st = 1;
                             if (vars[i].type == "integer") {
                                 out += "%%d\", " + astt.args[0];
                             }
@@ -34,7 +36,7 @@ std::string translating(std::vector<rbl_types::ast_type> ast, std::vector<rbl_ty
                                 }
                             }
                         }
-                        else {
+                        if (st == 0) {
                             std::cerr<<"You want "<<astt.args[0]<<" but it not created. List of vars:\n\n";
                             for (int h = 0; h != vars.size(); h++) {
                                 std::cerr<<"Name: "<<vars[i].name<<"\nType: "<<vars[i].type<<"\nValue: "<<vars[i].value<<"\n\n";
