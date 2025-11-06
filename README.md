@@ -1,9 +1,9 @@
 # RoltonBasic
 <br>
-<a href="https://github.com/KirillMos2/RoltonBasic/README.md#English">ENG version</a>
+<a href="https://github.com/KirillMos2/RoltonBasic/blob/main/README.md#English">ENG version</a>
 
 
-<a href="https://github.com/KirillMos2/RoltonBasic/README.md#Русский">РУС версия</a>
+<a href="https://github.com/KirillMos2/RoltonBasic/blob/main/README.md#Русский">РУС версия</a>
 <br>
 ## English
 
