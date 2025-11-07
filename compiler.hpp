@@ -18,9 +18,12 @@ std::string translating(std::vector<rbl_types::ast_type> ast, std::vector<rbl_ty
     for (int i = 0; i != ast.size(); i++) {
         auto astt = ast[i];
         if (astt.command == "PRINT") {
-            
-            includes.push_back("<stdio.h>");
-            includes.push_back("<stdlib.h>");
+            if (!in_vector(includes, "<stdio.h>")) {
+                includes.push_back("<stdio.h>");
+            }
+            if (!in_vector(includes, "<stdlib.h>")) {
+                includes.push_back("<stdlib.h>");
+            }
             out += "    printf(\"";
             if (astt.args[0] == "\"\"" && astt.args[(astt.args).size()-1] == "\"\"") {
                 for (int i = 1; i != (astt.args).size()-1; i++) {
@@ -80,8 +83,11 @@ std::string translating(std::vector<rbl_types::ast_type> ast, std::vector<rbl_ty
         }
     }
     out += "}";
-    ret += includes;
-    ret += "\n";
+    for (int i = 0; i != vct.size(); i++) {
+        ret += "#include ";
+        ret += vct[i];
+        ret += "\n"
+    }
     ret += out;
     return ret;
 }
