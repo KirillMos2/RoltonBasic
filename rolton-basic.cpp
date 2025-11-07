@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <string.h>
 #include <cstring>
@@ -9,12 +10,25 @@
 using namespace std;
 
 int main(int argc, char** argv) {
+    bool sourcecode = false;
+    if (argc >= 2) {
+        sourcecode = true;
+        try {
+            std::ifstream inpfile(argv[0]);
+        }
+        catch (...) {
+            cout<<"[ERR] File for input not found!\n";
+            exit(01);
+        }
+    }
     string line;
     vector<rbl_types::ast_type> ast_full;
     vector<rbl_types::var> vars_vector = {{"SYSVERSION", "string", "1.0.1-alpha"}, {"SYSDEVELOPER", "string", "KirillMos1"}};
     do {
-        cout<<"\n\nEnter code: ";
-        getline(cin, line);
+        if (!sourcecode) {
+            cout<<"\n\nEnter code: ";
+        }
+        getline(sourcecode? cin, line);
         if (line == "EXIT") {continue;}
         cout<<"[LOG] START LEXER\n";
         vector<lexer::token> tokens = lexer::lexering(line);
@@ -25,5 +39,12 @@ int main(int argc, char** argv) {
     } while (line != "EXIT");
     cout<<"[LOG] START TRANSLATING\n";
     string translated = compiler::translating(ast_full, vars_vector);
-    cout<<translated;
+    std::cout << "Your name for out file: program";
+    std::ofstream out;
+    out.open("programm.c");
+    if (out.is_open()) {
+        out << translated << endl;
+    }
+    out.close();
+    system("gcc programm.c -o programm");
 }

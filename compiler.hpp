@@ -25,24 +25,19 @@ std::string translating(std::vector<rbl_types::ast_type> ast, std::vector<rbl_ty
                         if (vars[i].name == astt.args[0]) {
                             st = 1;
                             if (vars[i].type == "integer") {
-                                out += "%%d\", " + astt.args[0];
+                                out += "%d\", " + astt.args[0];
                             }
                             else if (vars[i].type == "string") {
-                                if (astt.args[0] == "SYSVERSION") {
-                                    out += "%%s\", __VERSION__";
-                                }
-                                else {
-                                    out += "%%s\", " + astt.args[0];
-                                }
+                                out += "%s\", " + astt.args[0];
                             }
                         }
-                        if (st == 0) {
-                            std::cerr<<"You want "<<astt.args[0]<<" but it not created. List of vars:\n\n";
-                            for (int h = 0; h != vars.size(); h++) {
-                                std::cerr<<"Name: "<<vars[i].name<<"\nType: "<<vars[i].type<<"\nValue: "<<vars[i].value<<"\n\n";
-                            }
-                            exit(23);
+                    }
+                    if (st == 0) {
+                        std::cerr<<"You want "<<astt.args[0]<<" but it not created. List of vars:\n\n";
+                        for (int h = 0; h != vars.size(); h++) {
+                            std::cerr<<"Name: "<<vars[h].name<<"\nType: "<<vars[h].type<<"\nValue: "<<vars[h].value<<"\n\n";
                         }
+                        exit(23);
                     }
                 }
             }
