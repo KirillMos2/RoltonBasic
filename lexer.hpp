@@ -29,6 +29,9 @@ namespace lexer {
                 ||  buf == "VARINT"
                 ||  buf == "VARSTR"
                 ||  buf == "TYPE"
+                ||  buf == "INPUT"
+                ||  buf == "SUM"
+                ||  buf == "SUB"
                 ) {
                     newtoken = {"KWORD", buf};
                     tokens.push_back(newtoken);
@@ -79,6 +82,7 @@ namespace lexer {
                 case '%':
                     newtoken = {"MOD", "NONE"};
                     tokens.push_back(newtoken);
+                    break; // FIXED ERROR 0xa0000001 from anonim user
                 case '/':
                     newtoken = {"SLASH", "NONE"};
                     tokens.push_back(newtoken);
@@ -132,6 +136,7 @@ namespace lexer {
                     newtoken = {"SYMBOL", buf};
                     tokens.push_back(newtoken);
                     buf = "";
+                    break;
                 default:
                     if (std::isalpha(symb)) {
                         if (buf == "") {
@@ -147,6 +152,9 @@ namespace lexer {
                                 ||  buf == "VARINT"
                                 ||  buf == "VARSTR"
                                 ||  buf == "TYPE"
+                                ||  buf == "INPUT"
+                                ||  buf == "SUM"
+                                ||  buf == "SUB"
                                 ) {
                                     newtoken = {"KWORD", buf};
                                     tokens.push_back(newtoken);
