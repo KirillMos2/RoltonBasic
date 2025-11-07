@@ -1,18 +1,28 @@
 #include <cstdlib>
+#include <iostream>
 #include <string>
 #include "types.hpp"
 
 namespace compiler {
+bool in_vector(std::vector<std::string> vct, std::string find) {
+    for (int i = 0; i != vct.size(); i++) {
+        if (find == vct[i]) return true;
+    }
+    return false;
+}
+
 std::string translating(std::vector<rbl_types::ast_type> ast, std::vector<rbl_types::var> vars) {
-    std::string includes = "";
+    std::vector<std::string> includes;
     std::string out = "int main() {\n";
     std::string ret = "";
     for (int i = 0; i != ast.size(); i++) {
         auto astt = ast[i];
         if (astt.command == "PRINT") {
-            includes += "\n#include <stdio.h>\n#include <stdlib.h>";
+            
+            includes.push_back("<stdio.h>");
+            includes.push_back("<stdlib.h>");
             out += "    printf(\"";
-            if (astt.args[0] == "\"" && astt.args[(astt.args).size()-2] == "\"") {
+            if (astt.args[0] == "\"\"" && astt.args[(astt.args).size()-1] == "\"\"") {
                 for (int i = 1; i != (astt.args).size()-1; i++) {
                     out += astt.args[i];
                 }
@@ -52,12 +62,18 @@ std::string translating(std::vector<rbl_types::ast_type> ast, std::vector<rbl_ty
             vars.push_back({astt.args[0], "integer", astt.args[1]});
         }
         else if (astt.command == "VARSTR") {
-            out += "    char[] ";
-            out += astt.args[0];
-            out += " = ";
-            out += astt.args[1];
-            out += ";\n";
-            vars.push_back({astt.args[0], "string", astt.args[1]});
+            if (astt.args[1] == "\"\"" && astt.args[3] == "\"\"") {
+                out += "    char ";
+                out += astt.args[0];
+                out += "[] = \"";
+                out += astt.args[2];
+                out += "\";\n";
+                vars.push_back({astt.args[0], "string", astt.args[1]});
+            }
+            else {
+                std::cerr<<"SYNTAX ERROR: not found quotes\n";
+                exit(22);
+            }
         }
         else if (astt.command == "TYPE") {
             out += "    // this function unsupported on C";

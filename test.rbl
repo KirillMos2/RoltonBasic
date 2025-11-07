@@ -1,6 +1,0 @@
-VARINT a 5
-VARINT b 6
-PRINT a
-PRINT " "
-PRINT b
-EXIT
