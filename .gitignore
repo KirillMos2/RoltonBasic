@@ -3,3 +3,5 @@ roltonbasic
 *.zip
 deploy.sh
 programm*
+build/
+bin/
