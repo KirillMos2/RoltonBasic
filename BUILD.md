@@ -1,6 +1,6 @@
 # Сборка RoltonBasic
 
-Сборка Rolton осуществляется с помощью скрипта (build.sh)[scripts/build.sh]
+Сборка Rolton осуществляется с помощью скрипта [build.sh](scripts/build.sh)
 
 ```bash
 sh scripts/build.sh
