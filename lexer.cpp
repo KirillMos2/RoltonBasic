@@ -1,5 +1,4 @@
 #include "lexer.hpp"
-#include <cctype>
 #include <iostream>
 
 namespace lexer {
@@ -74,7 +73,7 @@ namespace lexer {
                 case '%':
                     newtoken = {"MOD", "NONE"};
                     tokens.push_back(newtoken);
-                    break;
+                    break; // FIXED BUG 0xa0000001 from anonim user
                 case '/':
                     newtoken = {"SLASH", "NONE"};
                     tokens.push_back(newtoken);
@@ -116,7 +115,7 @@ namespace lexer {
                 case '.':
                 case ',':
                 case '?':
-                case '!':
+                case '!': // TODO 0xa0001 / 0xa0000002 Fix. Double token
                 case '@':
                 case '#':
                 case '№':

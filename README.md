@@ -27,6 +27,8 @@ TYPE a
 TYPE b
 ```
 
+For building use `build.sh(build.sh)`
+
 ## Русский
 
 *RoltonBasic* - функционально-ориентированный язык программирования на C++
@@ -48,3 +50,5 @@ PRINT b
 TYPE a
 TYPE b
 ```
+
+Для сборки используйте `build.sh(build.sh)`

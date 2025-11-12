@@ -7,6 +7,7 @@
 #include "parser.hpp"
 #include "lexer.hpp"
 #include "compiler.hpp"
+#include "types.hpp"
 
 using namespace std;
 
@@ -18,14 +19,14 @@ int main(int argc, char** argv) {
     do {
         cout<<"\n\nEnter code: ";
         getline(cin, line);
-        if (line == "EXIT") {continue;} // TODO 0xd001 Fix. if input " EXIT" it DOESNT WORK but it MUST work / Починить. Если ввод " EXIT" то это НИХРЕНА не работает, А НАДО
+        if (line == "EXIT") {continue;} // TODO 0xd001 / 0xd0000001 Fix. if input " EXIT" it DOESNT WORK but it MUST work / Починить. Если ввод " EXIT" то это НИХРЕНА не работает, А НАДО
         cout<<"[LOG] START LEXER\n";
         vector<lexer::token> tokens = lexer::lexering(line);
         cout<<"[LOG] START PARSER\n";
         rbl_types::ast_type ast = parser::parse(tokens);
         cout<<"[LOG] ADD IN FULL AST\n";
         ast_full.push_back(ast);
-    } while (line != "EXIT"); // TODO 0xd001
+    } while (line != "EXIT"); // TODO 0xd001 / 0xd0000001
 
     cout<<"[LOG] START TRANSLATING\n";
     string translated = compiler::translating(ast_full, vars_vector);

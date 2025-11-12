@@ -1,9 +1,8 @@
 mkdir build/
 
-g++ -c lexer.cpp -o build/lexer.o
-g++ -c parser.cpp -o build/parser.o
-g++ -c compiler.cpp -o build/compiler.o
-g++ -c types.cpp -o build/types.o
-g++ rolton-basic.cpp build/lexer.o build/parser.o build/compiler.o build/types.o -o roltonbasic
+g++ -c lexer.cpp -o build/lexer.o -I include/
+g++ -c parser.cpp -o build/parser.o -I include/
+g++ -c compiler.cpp -o build/compiler.o -I include/
+g++ rolton-basic.cpp build/lexer.o build/parser.o build/compiler.o -o roltonbasic -I include/
 
 rm -rf build/
