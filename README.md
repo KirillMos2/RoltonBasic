@@ -27,7 +27,7 @@ TYPE a
 TYPE b
 ```
 
-For building use `[build.sh](build.sh)`
+For building use [build.sh](build.sh)
 
 ## Русский
 
@@ -51,4 +51,4 @@ TYPE a
 TYPE b
 ```
 
-Для сборки используйте `[build.sh](build.sh)`
+Для сборки используйте [build.sh](build.sh)
