@@ -27,7 +27,7 @@ TYPE a
 TYPE b
 ```
 
-For building use [build.sh](build.sh)
+For building use [build.sh](build.sh) on Linux/UNIX or [build.bat](build.bat) on Windows
 
 ## Русский
 
@@ -51,4 +51,4 @@ TYPE a
 TYPE b
 ```
 
-Для сборки используйте [build.sh](build.sh)
+Для сборки используйте [build.sh](build.sh) на Linux/UNIX системах или [build.bat](build.bat) в Windows
